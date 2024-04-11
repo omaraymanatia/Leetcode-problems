@@ -1,5 +1,12 @@
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
-        for i in range(k):
-            x=nums.pop()
-            nums.insert(0, x)
+        def sol(l, r):
+            while l<r:
+                nums[l], nums[r]=nums[r], nums[l]
+                l+=1
+                r-=1
+        n=len(nums)
+        k%=n
+        sol(0, n-1)
+        sol(0, k-1)
+        sol(k, n-1)
