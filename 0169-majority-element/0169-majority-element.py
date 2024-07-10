@@ -1,6 +1,13 @@
-class Solution:
-    def majorityElement(self, nums: List[int]) -> int:  
-        n=len(nums)
-        nums.sort()
-        return nums[n//2]
-            
+class Solution(object):
+    def majorityElement(self, nums):
+        ans=-1
+        count=0
+        for i in nums:
+            if not count:
+                ans=i
+                count+=1
+            elif ans==i:
+                count+=1
+            else:
+                count-=1
+        return ans
